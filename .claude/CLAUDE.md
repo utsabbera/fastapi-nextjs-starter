@@ -17,19 +17,18 @@
 | FastAPI entry point | `backend/main.py` |
 | App config | `backend/app/core/config.py` |
 | DB session | `backend/app/core/database.py` |
-| Auth/JWT | `backend/app/core/security.py` |
 | DI aliases | `backend/app/core/deps.py` |
 | Generated TS client | `frontend/src/lib/generated/` (never hand-edit) |
 | OpenAPI spec | `backend/openapi.json` (committed) |
 
 ## FastAPI Patterns
 
-**DI aliases** — use `DbDep` and `CurrentUserDep` in routers, never raw `Depends()`:
+**DI aliases** — use `DbDep` in routers, never raw `Depends()`:
 ```python
-from app.core.deps import CurrentUserDep, DbDep
+from app.core.deps import DbDep
 
-@router.get("/me")
-async def get_me(current_user: CurrentUserDep, db: DbDep) -> UserRead: ...
+@router.get("/items")
+async def list_items(db: DbDep) -> list[ItemRead]: ...
 ```
 
 **App factory** — always use `create_app()`, never import `app` directly in tests:

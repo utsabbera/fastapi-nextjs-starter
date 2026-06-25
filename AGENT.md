@@ -1,6 +1,6 @@
 # Agent Guide
 
-A FastAPI + Next.js starter for small-to-medium projects. One backend, one frontend, wired by a Makefile.
+A lean FastAPI + Next.js starter for small-to-medium projects. One backend, one frontend, wired by a Makefile.
 
 ## Quick Start
 
@@ -16,9 +16,9 @@ make dev            # backend :8000, frontend :3000
 ```
 backend/            FastAPI (Python 3.13, uv)
   app/
-    core/           config, database, security, deps
-    models/         SQLAlchemy ORM
-    schemas/        Pydantic request/response
+    core/           config, database, deps
+    models/         SQLAlchemy ORM models (add yours here)
+    schemas/        Pydantic request/response schemas
     repositories/   async DB access (no business logic)
     services/       business logic (raises HTTPException)
     routers/        thin route handlers
@@ -40,7 +40,7 @@ frontend/           Next.js 15 App Router (pnpm)
 | Task | Command |
 |---|---|
 | Regenerate TS client | `make gen-client` or `/gen-client` |
-| New migration | `make db-migrate MSG="add users table"` or `/db-migrate` |
+| New migration | `make db-migrate MSG="add posts table"` or `/db-migrate` |
 | Scaffold feature | `/add-feature` |
 | Lint all | `make lint` |
 | Typecheck all | `make typecheck` |
@@ -48,9 +48,8 @@ frontend/           Next.js 15 App Router (pnpm)
 
 ## Architecture
 
-- **FastAPI patterns**: `create_app()` factory, `DbDep`/`CurrentUserDep` DI aliases, router → service → repository layers
+- **FastAPI patterns**: `create_app()` factory, `DbDep` DI alias, router → service → repository layers
 - **Type-safe bridge**: FastAPI exports `backend/openapi.json` → `make gen-client` → `frontend/src/lib/generated/`
-- **Auth**: JWT via `python-jose`, passwords via `bcrypt` (no passlib)
 - **Migrations**: Alembic autogenerate — always review generated files before applying
 
 ## Critical Conventions

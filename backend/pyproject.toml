@@ -15,8 +15,6 @@ dependencies = [
     "asyncpg>=0.30",
     "alembic>=1.14",
     "pydantic-settings>=2.7",
-    "python-jose[cryptography]>=3.3",
-    "bcrypt>=4.2",
     "httpx>=0.28",
 ]
 
@@ -28,7 +26,6 @@ dev = [
     "ruff>=0.9",
     "mypy>=1.14",
     "sqlalchemy[mypy]>=2.0",
-    "types-python-jose>=3.3",
 ]
 
 [tool.ruff]

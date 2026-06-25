@@ -18,75 +18,6 @@
           }
         }
       }
-    },
-    "/auth/token": {
-      "post": {
-        "tags": ["auth"],
-        "summary": "Login",
-        "operationId": "login_auth_token_post",
-        "requestBody": {
-          "content": { "application/x-www-form-urlencoded": { "schema": { "$ref": "#/components/schemas/Body_login_auth_token_post" } } },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/TokenResponse" } } }
-          }
-        }
-      }
-    },
-    "/auth/me": {
-      "get": {
-        "tags": ["auth"],
-        "summary": "Get Current User Info",
-        "operationId": "get_current_user_info_auth_me_get",
-        "security": [{ "OAuth2PasswordBearer": [] }],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UserRead" } } }
-          }
-        }
-      }
-    },
-    "/users": {
-      "post": {
-        "tags": ["users"],
-        "summary": "Create User",
-        "operationId": "create_user_users_post",
-        "requestBody": {
-          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UserCreate" } } },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Successful Response",
-            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UserRead" } } }
-          }
-        }
-      }
-    },
-    "/users/me": {
-      "get": {
-        "tags": ["users"],
-        "summary": "Get Me",
-        "operationId": "get_me_users_me_get",
-        "security": [{ "OAuth2PasswordBearer": [] }],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UserRead" } } }
-          }
-        }
-      },
-      "delete": {
-        "tags": ["users"],
-        "summary": "Delete Me",
-        "operationId": "delete_me_users_me_delete",
-        "security": [{ "OAuth2PasswordBearer": [] }],
-        "responses": { "204": { "description": "Successful Response" } }
-      }
     }
   },
   "components": {
@@ -96,49 +27,6 @@
         "type": "object",
         "required": ["status"],
         "title": "HealthResponse"
-      },
-      "TokenResponse": {
-        "properties": {
-          "access_token": { "type": "string", "title": "Access Token" },
-          "token_type": { "type": "string", "title": "Token Type", "default": "bearer" }
-        },
-        "type": "object",
-        "required": ["access_token"],
-        "title": "TokenResponse"
-      },
-      "UserCreate": {
-        "properties": {
-          "email": { "type": "string", "format": "email", "title": "Email" },
-          "password": { "type": "string", "title": "Password" }
-        },
-        "type": "object",
-        "required": ["email", "password"],
-        "title": "UserCreate"
-      },
-      "UserRead": {
-        "properties": {
-          "id": { "type": "integer", "title": "Id" },
-          "email": { "type": "string", "title": "Email" },
-          "is_active": { "type": "boolean", "title": "Is Active" }
-        },
-        "type": "object",
-        "required": ["id", "email", "is_active"],
-        "title": "UserRead"
-      },
-      "Body_login_auth_token_post": {
-        "properties": {
-          "username": { "type": "string", "title": "Username" },
-          "password": { "type": "string", "title": "Password" }
-        },
-        "type": "object",
-        "required": ["username", "password"],
-        "title": "Body_login_auth_token_post"
-      }
-    },
-    "securitySchemes": {
-      "OAuth2PasswordBearer": {
-        "type": "oauth2",
-        "flows": { "password": { "scopes": {}, "tokenUrl": "/auth/token" } }
       }
     }
   }
