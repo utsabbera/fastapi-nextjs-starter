@@ -96,6 +96,25 @@ For a new resource (e.g. `post`):
 9. `make gen-client`
 10. `frontend/src/app/post/page.tsx` — wire up via `@/lib/generated`
 
+## Commit Messages
+
+Conventional Commits — subject line enforced by the commit-msg hook.
+
+```
+<type>(<scope>): <description>
+                                        ← blank line if body follows
+<why this change was made>              ← optional body: explain WHY, not WHAT
+                                        ← blank line before footers
+Closes #123                             ← issue reference (auto-closes on merge)
+BREAKING CHANGE: <description>          ← breaking change footer if applicable
+```
+
+- **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`, `build`, `perf`, `revert`
+- **Scope:** optional — name the module/area, not the ticket (`auth`, `db`, `api`)
+- **Description:** imperative mood, max 72 chars, no trailing period
+- **Body:** optional but encouraged for non-trivial changes — future readers need the WHY
+- **Issue reference:** footer `Closes #123` (not in subject) — GitHub auto-closes on merge; use multiple lines for multiple issues
+
 ## Critical Conventions
 
 - Never hand-edit `frontend/src/lib/generated/` — always run `make gen-client`
