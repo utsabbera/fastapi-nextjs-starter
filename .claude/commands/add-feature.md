@@ -13,7 +13,7 @@ Given resource name `$ARGS` (e.g. "post"):
 - [ ] `backend/app/schemas/$ARGS.py` — `{Name}Create`, `{Name}Update`, `{Name}Read`
 - [ ] `backend/app/repositories/$ARGS.py` — `{Name}Repository` with async CRUD
 - [ ] `backend/app/services/$ARGS.py` — `{Name}Service` with business logic
-- [ ] `backend/app/routers/$ARGS.py` — route handlers using `DbDep`, `CurrentUserDep`
+- [ ] `backend/app/routers/$ARGS.py` — route handlers using `DbDep`
 - [ ] Register router in `backend/main.py` `create_app()`
 - [ ] `backend/tests/unit/test_$ARGS.py` — unit tests (no DB)
 - [ ] `backend/tests/integration/test_$ARGS.py` — integration tests
@@ -31,5 +31,5 @@ Given resource name `$ARGS` (e.g. "post"):
 ## Conventions
 
 - Services raise `HTTPException`, repositories return `None` on not-found
-- Response schemas never expose `hashed_password` or internal fields
-- Use `DbDep` and `CurrentUserDep` from `app.core.deps` in routers
+- Response schemas never expose internal fields
+- Use `DbDep` from `app.core.deps` in routers
