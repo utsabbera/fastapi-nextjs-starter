@@ -113,7 +113,7 @@ BREAKING CHANGE: <description>          ← breaking change footer if applicable
 - **Scope:** optional — name the module/area, not the ticket (`auth`, `db`, `api`)
 - **Description:** imperative mood, max 72 chars, no trailing period
 - **Body:** optional but encouraged for non-trivial changes — future readers need the WHY
-- **Issue reference:** footer `Closes #123` (not in subject) — GitHub auto-closes on merge; use multiple lines for multiple issues
+- **Issue reference:** `Refs #123` on intermediate commits (links without closing); `Closes #123` on the final commit that completes the issue
 
 ## Critical Conventions
 
