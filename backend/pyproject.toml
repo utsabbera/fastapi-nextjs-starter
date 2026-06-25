@@ -10,21 +10,20 @@ name = "backend"
 version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
-    "fastapi[standard]>=0.115",
-    "sqlalchemy[asyncio]>=2.0",
-    "asyncpg>=0.30",
-    "alembic>=1.14",
-    "pydantic-settings>=2.7",
-    "httpx>=0.28",
+    "fastapi[standard]>=0.138",
+    "sqlalchemy[asyncio]>=2.0.51",
+    "asyncpg>=0.31",
+    "alembic>=1.18",
+    "pydantic-settings>=2.14",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest>=8.3",
-    "pytest-asyncio>=0.25",
-    "pytest-cov>=6.0",
-    "ruff>=0.9",
-    "mypy>=1.14",
+    "pytest>=9.1",
+    "pytest-asyncio>=1.4",
+    "pytest-cov>=7.1",
+    "ruff>=0.15",
+    "mypy>=2.1",
     "sqlalchemy[mypy]>=2.0",
 ]
 

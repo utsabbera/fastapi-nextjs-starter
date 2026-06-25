@@ -5,7 +5,7 @@ export default defineConfig({
   input: "../backend/openapi.json",
   output: {
     path: "src/lib/generated",
-    lint: "disabled",
+    postProcess: [],
   },
   types: { enums: "typescript" },
   services: { asClass: false },
