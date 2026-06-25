@@ -1,4 +1,4 @@
-# fastapi-nextjs-simple
+# FastAPI Next.js Starter
 
 A lean starter for small-to-medium projects: one FastAPI backend, one Next.js frontend, wired by a Makefile. No monorepo tooling.
 
