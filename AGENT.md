@@ -5,11 +5,13 @@ A lean FastAPI + Next.js starter for small-to-medium projects. One backend, one 
 ## Quick Start
 
 ```bash
-make install        # install all deps (pnpm + uv)
-make db-up          # start postgres + redis via Docker
-cd backend && uv run alembic upgrade head
-make dev            # backend :8000, frontend :3000
+make install                              # install all deps (pnpm + uv)
+cd backend && uv run alembic upgrade head # apply migrations
+make dev                                  # backend :8000, frontend :3000
 ```
+
+The default database is SQLite (`backend/dev.db`) — no Docker required.
+To switch to PostgreSQL: update `DATABASE_URL` in `backend/.env` and run `uv add asyncpg`.
 
 ## Directory Map
 
@@ -45,12 +47,14 @@ frontend/           Next.js 15 App Router (pnpm)
 | Lint all | `make lint` |
 | Typecheck all | `make typecheck` |
 | Run all tests | `make test` |
+| Start PostgreSQL | `make db-up` (optional — only needed if using Postgres) |
 
 ## Architecture
 
 - **FastAPI patterns**: `create_app()` factory, `DbDep` DI alias, router → service → repository layers
 - **Type-safe bridge**: FastAPI exports `backend/openapi.json` → `make gen-client` → `frontend/src/lib/generated/`
 - **Migrations**: Alembic autogenerate — always review generated files before applying
+- **Database**: SQLite by default (zero-config); swap to PostgreSQL, MySQL, or any SQLAlchemy-compatible DB via `DATABASE_URL`
 
 ## Critical Conventions
 
@@ -58,3 +62,4 @@ frontend/           Next.js 15 App Router (pnpm)
 - Run `make gen-client` after any FastAPI route or schema change
 - Run `/db-migrate` after any SQLAlchemy model change
 - `backend/openapi.json` is committed — schema drift shows as a visible diff in PRs
+- SQLite is for development; use PostgreSQL or equivalent for production

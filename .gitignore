@@ -21,6 +21,11 @@ htmlcov/
 .env.local
 .env.*.local
 
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+
 # Alembic
 backend/alembic/versions/*.py
 !backend/alembic/versions/.gitkeep

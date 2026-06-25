@@ -50,7 +50,7 @@ CORS_ORIGINS=["http://localhost:3000","https://example.com"]
 ## Test Patterns
 
 - Unit tests in `backend/tests/unit/` — no DB, no HTTP
-- Integration tests in `backend/tests/integration/` — require `postgres-test` on :5433
+- Integration tests in `backend/tests/integration/` — use in-memory SQLite, no external services needed
 - Run unit tests: `cd backend && uv run pytest tests/unit/ -v`
 - Run all tests: `cd backend && uv run pytest`
 

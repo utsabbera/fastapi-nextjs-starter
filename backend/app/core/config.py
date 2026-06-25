@@ -6,7 +6,7 @@ class Settings(BaseSettings):
 
     app_name: str = "FastAPI App"
     debug: bool = True
-    database_url: str = "postgresql+asyncpg://dev:dev@localhost:5432/app_dev"
+    database_url: str = "sqlite+aiosqlite:///./dev.db"
     cors_origins: list[str] = ["http://localhost:3000"]
 
 
