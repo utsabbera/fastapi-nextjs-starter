@@ -67,3 +67,20 @@ Makefile    sole orchestrator
 ```
 
 See `AGENTS.md` for detailed architecture and conventions.
+
+# Commit Messages
+
+Conventional Commits — subject line enforced by the commit-msg hook.
+
+<type>(<scope>): <description>
+
+<why this change was made — optional body for non-trivial commits>
+
+Refs #123       ← ongoing work on an issue
+Closes #123     ← final commit that completes the issue
+BREAKING CHANGE: <description>
+```
+
+Types: `feat` `fix` `docs` `style` `refactor` `test` `chore` `ci` `build` `perf` `revert`
+Scope: module/area (`auth`, `db`, `api`) — not the ticket number
+Description: imperative mood, max 72 chars, no trailing period
