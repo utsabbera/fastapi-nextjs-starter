@@ -2,7 +2,6 @@
 
 install:
 	pnpm install
-	cd frontend && pnpm install
 	cd backend && uv sync
 
 dev:

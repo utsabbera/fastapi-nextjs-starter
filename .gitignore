@@ -34,3 +34,4 @@ backend/alembic/versions/*.py
 .DS_Store
 _worktrees/
 *.log
+*.tsbuildinfo
